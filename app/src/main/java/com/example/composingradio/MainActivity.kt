@@ -1,6 +1,7 @@
 package com.example.composingradio
 
 import android.os.Bundle
+import android.util.Log
 
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,6 +10,8 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.hilt.navigation.compose.hiltViewModel
 
 import com.example.composingradio.ui.common.ShowVerticalSeparators
+import com.example.composingradio.ui.dialogs.DialogsCaller
+import com.example.composingradio.ui.dialogs.TagsDialog
 
 
 import com.example.composingradio.ui.navigation.BottomNav
@@ -29,12 +32,17 @@ class MainActivity : ComponentActivity() {
 
             ComposingRadioTheme {
 
+
                 BottomNav()
 
                 if(isSystemInDarkTheme())
-                ShowVerticalSeparators()
+                    ShowVerticalSeparators()
 
                 DrawToolbarBG()
+
+                DialogsCaller()
+
+
             }
         }
     }

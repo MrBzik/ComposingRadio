@@ -1,6 +1,7 @@
 package com.example.composingradio.exoplayer
 
 import android.content.SharedPreferences
+import android.util.Log
 import com.example.composingradio.data.remote.RadioApi
 import com.example.composingradio.data.remote.entities.RadioStations
 import com.example.composingradio.utils.Constants.API_RADIO_SEARCH_URL
@@ -61,6 +62,7 @@ class RadioSource @Inject constructor(
             }
 
         } catch (e : Exception){
+            Log.d("CHECKTAGS", e.stackTraceToString())
             null
         }
         if(response == null) {

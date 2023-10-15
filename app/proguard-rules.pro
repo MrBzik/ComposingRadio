@@ -22,3 +22,4 @@
 
 -dontobfuscate
 -keepclassmembers class com.example.composingradio.data** {*;}
+

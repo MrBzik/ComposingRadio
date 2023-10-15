@@ -77,31 +77,31 @@ fun BottomNavGraph(
             navViewModel.updateToolbarState(0)
             SearchScreen(searchViewModel)
             if(!isSystemInDarkTheme())
-            systemUiController.setSystemBarsColor(colorResource(id = R.color.nav_bar_search_fragment))
+                systemUiController.setSystemBarsColor(colorResource(id = R.color.nav_bar_search_fragment))
         }
         composable(route = BottomBarScreen.Favourite.route){
             navViewModel.updateToolbarState(1)
             FavScreen()
             if(!isSystemInDarkTheme())
-            systemUiController.setSystemBarsColor(colorResource(id = R.color.nav_bar_fav_fragment))
+                systemUiController.setSystemBarsColor(colorResource(id = R.color.nav_bar_fav_fragment))
         }
         composable(route = BottomBarScreen.History.route){
             navViewModel.updateToolbarState(2)
             HistoryScreen()
             if(!isSystemInDarkTheme())
-            systemUiController.setSystemBarsColor(colorResource(id = R.color.nav_bar_history_frag))
+                systemUiController.setSystemBarsColor(colorResource(id = R.color.nav_bar_history_frag))
         }
         composable(route = BottomBarScreen.Recording.route){
             navViewModel.updateToolbarState(3)
             RecScreen()
             if(!isSystemInDarkTheme())
-            systemUiController.setSystemBarsColor(colorResource(id = R.color.nav_bar_rec_frag))
+                systemUiController.setSystemBarsColor(colorResource(id = R.color.nav_bar_rec_frag))
         }
         composable(route = BottomBarScreen.Settings.route){
             navViewModel.updateToolbarState(4)
             SettingsScreen()
             if(!isSystemInDarkTheme())
-            systemUiController.setSystemBarsColor(colorResource(id = R.color.nav_bar_settings_frag))
+                systemUiController.setSystemBarsColor(colorResource(id = R.color.nav_bar_settings_frag))
         }
     }
 }

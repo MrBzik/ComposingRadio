@@ -37,6 +37,8 @@ import com.example.composingradio.utils.Constants.SEARCH_PREF_TAG
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flowOf
 import java.util.*
 import javax.inject.Inject
@@ -90,6 +92,15 @@ class SearchViewModel @Inject constructor(
     var noResultDetection : MutableLiveData<Boolean> = MutableLiveData()
 
     var isNewSearch = true
+
+
+//    private val _tagsDialogState = MutableStateFlow(false)
+//    val tagsDialogState = _tagsDialogState.asStateFlow()
+//
+//    fun updateTagsDialogState(){
+//        _tagsDialogState.value = !_tagsDialogState.value
+//    }
+
 
     private suspend fun searchWithNewParams(
 

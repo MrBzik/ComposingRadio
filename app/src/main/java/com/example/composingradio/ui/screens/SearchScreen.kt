@@ -1,6 +1,5 @@
 package com.example.composingradio.ui.screens
 
-import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.animation.core.tween
@@ -15,13 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshotFlow
-
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import com.example.composingradio.ui.items.RadioItem
@@ -70,7 +66,9 @@ fun SearchScreen(
 
         LazyColumn(
             state = lazyListState,
-            modifier = Modifier.testTag("search_list").fillMaxSize()
+            modifier = Modifier
+                .testTag("search_list")
+                .fillMaxSize()
         ){
 
             items(

@@ -29,7 +29,7 @@ class ExampleStartupBenchmark {
     @get:Rule
     val benchmarkRule = MacrobenchmarkRule()
 
-    @Test
+
     fun startup() = benchmarkRule.measureRepeated(
         packageName = "com.example.composingradio",
         metrics = listOf(StartupTimingMetric()),
@@ -40,12 +40,13 @@ class ExampleStartupBenchmark {
         startActivityAndWait()
     }
 
-    @Test
-    fun scrolling() = benchmarkRule.measureRepeated(
+
+    fun scrolling(mode : CompilationMode) = benchmarkRule.measureRepeated(
         packageName = "com.example.composingradio",
         metrics = listOf(FrameTimingMetric()),
         iterations = 2,
-        startupMode = StartupMode.COLD
+        startupMode = StartupMode.COLD,
+        compilationMode = mode
     ) {
         pressHome()
         startActivityAndWait()
@@ -54,9 +55,18 @@ class ExampleStartupBenchmark {
 
         device.waitForIdle()
 
-        list.fling(Direction.DOWN)
+        repeat(3){
+            list.fling(Direction.DOWN)
+        }
 
     }
+
+//    @Test
+    fun scrollingWithDefaultMode() = scrolling(CompilationMode.None())
+
+    @Test
+    fun scrollingWithBaselineProf() = scrolling(CompilationMode.Partial())
+
 
 
 }

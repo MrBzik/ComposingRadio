@@ -20,6 +20,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.example.composingradio.R
 import com.example.composingradio.ui.common.SeparatorVertical
@@ -27,7 +28,9 @@ import com.example.composingradio.ui.common.ShowVerticalSeparators
 import com.example.composingradio.utils.TextStyles.interactiveTitle
 import com.example.composingradio.utils.TextStyles.interactiveTitleOutline
 import com.example.composingradio.ui.theme.NoRippleTheme
-
+import com.example.composingradio.ui.viewmodels.DialogsViewModel
+import com.example.composingradio.ui.viewmodels.SearchViewModel
+import com.example.composingradio.utils.DialogCalls
 
 
 //val appBarState = remember {
@@ -47,7 +50,9 @@ import com.example.composingradio.ui.theme.NoRippleTheme
 
 
 @Composable
-fun SearchToolbar(){
+fun SearchToolbar(
+    dialogsViewModel: DialogsViewModel = hiltViewModel()
+){
 
 
     Box(modifier = Modifier
@@ -85,9 +90,9 @@ fun SearchToolbar(){
             verticalAlignment = Alignment.CenterVertically
         ){
 
-            SearchTitle(text = "Tag", 1)
-            SearchTitle(text = "Name", 2)
-            SearchTitle(text = "Country", 3)
+            SearchTitle(text = "Tag", showDialog = { dialogsViewModel.updateDialogsState(DialogCalls.TAGS_DIALOG) })
+            SearchTitle(text = "Name"){}
+            SearchTitle(text = "Country"){}
 
         }
     }
@@ -96,7 +101,7 @@ fun SearchToolbar(){
 
 
 @Composable
-fun RowScope.SearchTitle(text : String, logic : Int){
+fun RowScope.SearchTitle(text : String, showDialog : () -> Unit){
 
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
@@ -107,17 +112,7 @@ fun RowScope.SearchTitle(text : String, logic : Int){
     CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
 
         TextButton(onClick = {
-            when(logic){
-                1 -> {
-
-                }
-                2 -> {
-
-                }
-                3 -> {
-
-                }
-            }
+            showDialog()
         },
             interactionSource = interactionSource,
             modifier = Modifier.weight(1f)
